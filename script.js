@@ -29,9 +29,14 @@ $.each(arrObj, function(index, value) {
    console.log("Affichage age utilisant jQuery = " + value.age);
 });
 
-
-/**    exo     **/
+  /** ********** **/
+ /**     exo    **/
+/** ********** **/
 // create frame for avatar & info & nav
+let target = document.getElementById('target');
+console.log(target);
+let listPlace = $('#listPlace');
+
 let frame = document.createElement('div');
 frame.style.cssText = `
     text-align : center;
@@ -41,7 +46,6 @@ frame.style.cssText = `
 let personImg = document.createElement('img');
 
 let info = document.createElement('p');
-
 
 let nav = document.createElement('div');
 let span1 = document.createElement('span');
@@ -58,7 +62,10 @@ nav.style.cssText = `
     font-size : 2rem;
 `;
 
-document.body.appendChild(frame);
+if(target){
+    target.appendChild(frame);
+}
+
 frame.appendChild(personImg);
 frame.appendChild(info);
 nav.appendChild(span1);
@@ -95,3 +102,11 @@ $('span').click(function (){
     info.innerHTML = arrObj[p].person + " (" + arrObj[p].age + ")";
 })
 
+function displayList (){
+    $.each(arrObj, function (index, value){
+        listPlace.append(
+            "nom : " + value.person + "age : " + value.age + "<img src=" + value.avatar +" width=50vh ><br>");
+    })
+}
+
+displayList();
