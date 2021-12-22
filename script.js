@@ -29,31 +29,69 @@ $.each(arrObj, function(index, value) {
    console.log("Affichage age utilisant jQuery = " + value.age);
 });
 
+
+/**    exo     **/
+// create frame for avatar & info & nav
 let frame = document.createElement('div');
 frame.style.cssText = `
     text-align : center;
     margin : 5vh auto;
 `;
 
-document.body.appendChild(frame);
-
 let personImg = document.createElement('img');
-personImg.src = arrObj[0].avatar;
-frame.appendChild(personImg);
 
 let info = document.createElement('p');
-info.innerHTML = arrObj[0].person + " (" + arrObj[0].age + ")";
-frame.appendChild(info);
+
 
 let nav = document.createElement('div');
 let span1 = document.createElement('span');
 let span2 = document.createElement('span');
-span1.innerHTML =
-nav.appendChild(span1);
-nav.appendChild(span2);
+
+span1.innerHTML = "<";
+span1.style.margin = "1rem";
+span2.innerHTML = ">";
+span2.style.margin = "1rem";
 
 nav.style.cssText = `
     display : flex;
-    justify-content : space-around;
+    justify-content : center;
+    font-size : 2rem;
 `;
+
+document.body.appendChild(frame);
+frame.appendChild(personImg);
+frame.appendChild(info);
+nav.appendChild(span1);
+nav.appendChild(span2);
+frame.appendChild(nav);
+
+let p = 0;
+personImg.src = arrObj[p].avatar;
+info.innerHTML = arrObj[p].person + " (" + arrObj[p].age + ")";
+
+span1.style.visibility = 'hidden';
+
+$('span').click(function (){
+
+    if($(this).index() === 0){
+        p--;
+    }
+    else {
+        p++;
+    }
+
+    if(p === 0){
+        span1.style.visibility = 'hidden';
+    }
+    else if (p === arrObj.length -1){
+        span2.style.visibility = 'hidden';
+    }
+    else{
+        span1.style.visibility = 'visible';
+        span2.style.visibility = 'visible';
+    }
+
+    personImg.src = arrObj[p].avatar;
+    info.innerHTML = arrObj[p].person + " (" + arrObj[p].age + ")";
+})
 
