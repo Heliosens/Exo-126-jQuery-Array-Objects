@@ -105,7 +105,7 @@ $('span').click(function (){
 function displayList (){
     $.each(arrObj, function (index, value){
         listPlace.append(
-            "nom : " + value.person + "age : " + value.age + "<img src=" + value.avatar +" width=50vh ><br>");
+            "nom : " + value.person + ", age : " + value.age + " ans, avatar : <img src=" + value.avatar +" width=50vh ><br>");
     })
 }
 
